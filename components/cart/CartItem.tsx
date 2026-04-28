@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { ChangeEvent } from "react";
 import { formatCurrency } from "@/lib/utils/formatCurrency";
 import type { CartItem as CartItemType } from "@/types/cart";
 
@@ -9,10 +10,19 @@ interface CartItemProps {
   item: CartItemType;
   onIncrease: () => void;
   onDecrease: () => void;
+  onSetQuantity: (quantity: number) => void;
   onRemove: () => void;
 }
 
-export function CartItem({ item, onIncrease, onDecrease, onRemove }: CartItemProps) {
+export function CartItem({ item, onIncrease, onDecrease, onSetQuantity, onRemove }: CartItemProps) {
+  const maxQuantity = typeof item.stock === "number" ? Math.max(1, Math.floor(item.stock)) : 99;
+
+  const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const next = Number.parseInt(event.target.value, 10);
+    if (Number.isNaN(next)) return;
+    onSetQuantity(Math.min(maxQuantity, Math.max(1, next)));
+  };
+
   return (
     <article className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -48,14 +58,21 @@ export function CartItem({ item, onIncrease, onDecrease, onRemove }: CartItemPro
             >
               -
             </button>
-            <span className="flex h-9 w-10 items-center justify-center border-x border-slate-300 text-sm font-semibold text-slate-900">
-              {item.quantity}
-            </span>
+            <input
+              type="number"
+              min={1}
+              max={99}
+              value={item.quantity}
+              onChange={handleQuantityChange}
+              className="h-9 w-12 border-x border-slate-300 text-center text-sm font-semibold text-slate-900 outline-none"
+              aria-label={`Quantity of ${item.name}`}
+            />
             <button
               type="button"
               onClick={onIncrease}
               className="h-9 w-9 text-base font-semibold text-slate-700 transition hover:bg-slate-100"
               aria-label={`Increase quantity of ${item.name}`}
+              disabled={item.quantity >= maxQuantity}
             >
               +
             </button>
@@ -80,4 +97,3 @@ export function CartItem({ item, onIncrease, onDecrease, onRemove }: CartItemPro
     </article>
   );
 }
-

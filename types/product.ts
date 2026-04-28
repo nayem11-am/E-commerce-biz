@@ -8,4 +8,5 @@ export interface Product {
   category: string;
   categorySlug: string;
   inStock: boolean;
+  stock: number;
 }

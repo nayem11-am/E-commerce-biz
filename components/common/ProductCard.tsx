@@ -11,11 +11,12 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { addItem } = useCart();
+  const { addItem, items } = useCart();
   const isPlaceholderImage = product.image.endsWith(".svg");
+  const isInCart = items.some((item) => item.id === product.id);
 
   const handleAddToCart = () => {
-    if (!product.inStock) return;
+    if (!product.inStock || isInCart) return;
 
     addItem({
       id: product.id,
@@ -23,6 +24,7 @@ export function ProductCard({ product }: ProductCardProps) {
       name: product.name,
       price: product.price,
       quantity: 1,
+      stock: product.stock,
       image: product.image,
       category: product.category,
     });
@@ -83,10 +85,10 @@ export function ProductCard({ product }: ProductCardProps) {
           <button
             type="button"
             onClick={handleAddToCart}
-            disabled={!product.inStock}
+            disabled={!product.inStock || isInCart}
             className="w-full rounded-lg bg-slate-900 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 disabled:cursor-not-allowed disabled:bg-slate-300 sm:rounded-xl sm:px-4 sm:py-2.5 sm:text-sm"
           >
-            {product.inStock ? "Add to Cart" : "Unavailable"}
+            {!product.inStock ? "Unavailable" : isInCart ? "Already in Cart" : "Add to Cart"}
           </button>
         </div>
       </div>

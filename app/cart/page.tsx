@@ -58,6 +58,7 @@ export default function CartPage() {
                   item={item}
                   onIncrease={() => updateItemQuantity(item.id, item.quantity + 1)}
                   onDecrease={() => updateItemQuantity(item.id, item.quantity - 1)}
+                  onSetQuantity={(quantity) => updateItemQuantity(item.id, quantity)}
                   onRemove={() => removeItem(item.id)}
                 />
               ))}

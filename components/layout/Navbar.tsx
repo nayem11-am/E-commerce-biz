@@ -8,12 +8,12 @@ import { NAV_LINKS } from "@/lib/constants/navigation";
 import { Container } from "@/components/common/Container";
 
 export function Navbar() {
-  const { totalItems, isHydrated } = useCart();
+  const { items, isHydrated } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mainLinks = NAV_LINKS.filter((item) => item.href !== "/cart");
   const inlineMarqueeText =
     "Get the best deal of late April. 10% discout on each product.";
-  const cartCount = isHydrated ? totalItems : null;
+  const cartCount = isHydrated ? items.length : null;
   const mobileLinks = [
     { label: "Home", href: "/" },
     { label: "Shop", href: "/shop" },

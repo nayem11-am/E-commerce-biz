@@ -11,16 +11,18 @@ interface ProductActionsProps {
 
 export function ProductActions({ product }: ProductActionsProps) {
   const router = useRouter();
-  const { addItem } = useCart();
+  const { addItem, items } = useCart();
   const [quantity, setQuantity] = useState(1);
 
-  const canPurchase = product.inStock;
+  const stockLimit = Math.max(0, Math.floor(product.stock));
+  const canPurchase = product.inStock && stockLimit > 0;
+  const isInCart = items.some((item) => item.id === product.id);
 
   const decreaseQuantity = () => setQuantity((prev) => Math.max(1, prev - 1));
-  const increaseQuantity = () => setQuantity((prev) => Math.min(10, prev + 1));
+  const increaseQuantity = () => setQuantity((prev) => Math.min(stockLimit, prev + 1));
 
   const addToCart = () => {
-    if (!canPurchase) return;
+    if (!canPurchase || isInCart) return;
 
     addItem({
       id: product.id,
@@ -28,6 +30,7 @@ export function ProductActions({ product }: ProductActionsProps) {
       name: product.name,
       price: product.price,
       quantity,
+      stock: stockLimit,
       image: product.image,
       category: product.category,
     });
@@ -36,7 +39,9 @@ export function ProductActions({ product }: ProductActionsProps) {
   const buyNow = () => {
     if (!canPurchase) return;
 
-    addToCart();
+    if (!isInCart) {
+      addToCart();
+    }
     router.push("/checkout");
   };
 
@@ -50,7 +55,7 @@ export function ProductActions({ product }: ProductActionsProps) {
             onClick={decreaseQuantity}
             className="h-11 w-11 text-lg font-semibold text-slate-700 transition hover:bg-slate-100"
             aria-label="Decrease quantity"
-            disabled={!canPurchase}
+            disabled={!canPurchase || isInCart}
           >
             -
           </button>
@@ -62,21 +67,29 @@ export function ProductActions({ product }: ProductActionsProps) {
             onClick={increaseQuantity}
             className="h-11 w-11 text-lg font-semibold text-slate-700 transition hover:bg-slate-100"
             aria-label="Increase quantity"
-            disabled={!canPurchase}
+            disabled={!canPurchase || isInCart}
           >
             +
           </button>
         </div>
+        {!isInCart && canPurchase ? (
+          <p className="mt-2 text-xs text-slate-500">Available stock: {stockLimit}</p>
+        ) : null}
+        {isInCart ? (
+          <p className="mt-2 text-xs text-slate-500">
+            This product is already in cart. Change quantity from cart page.
+          </p>
+        ) : null}
       </div>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <button
           type="button"
           onClick={addToCart}
-          disabled={!canPurchase}
+          disabled={!canPurchase || isInCart}
           className="rounded-xl border border-brand-700 px-5 py-3 text-sm font-semibold text-brand-700 transition hover:bg-brand-50 disabled:cursor-not-allowed disabled:border-slate-300 disabled:text-slate-400"
         >
-          Add to Cart
+          {isInCart ? "Already in Cart" : "Add to Cart"}
         </button>
         <button
           type="button"

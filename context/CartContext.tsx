@@ -30,12 +30,17 @@ function normalizeQuantity(quantity: number) {
   return Math.min(99, Math.max(1, Math.floor(quantity)));
 }
 
+function clampByStock(quantity: number, stock?: number) {
+  if (typeof stock !== "number") return normalizeQuantity(quantity);
+  return Math.max(1, Math.min(normalizeQuantity(quantity), Math.max(1, Math.floor(stock))));
+}
+
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case "hydrate":
       return { items: action.payload, isHydrated: true };
     case "add": {
-      const quantity = normalizeQuantity(action.payload.quantity ?? 1);
+      const quantity = clampByStock(action.payload.quantity ?? 1, action.payload.stock);
       const existingItem = state.items.find((item) => item.id === action.payload.id);
 
       if (!existingItem) {
@@ -49,7 +54,10 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         isHydrated: state.isHydrated,
         items: state.items.map((item) =>
           item.id === action.payload.id
-            ? { ...item, quantity: normalizeQuantity(item.quantity + quantity) }
+            ? {
+                ...item,
+                quantity: clampByStock(item.quantity + quantity, item.stock),
+              }
             : item,
         ),
       };
@@ -67,7 +75,8 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         };
       }
 
-      const quantity = normalizeQuantity(action.payload.quantity);
+      const targetItem = state.items.find((item) => item.id === action.payload.id);
+      const quantity = clampByStock(action.payload.quantity, targetItem?.stock);
       return {
         isHydrated: state.isHydrated,
         items: state.items.map((item) =>

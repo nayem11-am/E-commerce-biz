@@ -47,6 +47,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
 
         <ShopCatalog
+          key={category.slug}
           categories={productCategories}
           products={allProducts}
           initialCategorySlug={category.slug}
@@ -55,4 +56,3 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     </section>
   );
 }
-

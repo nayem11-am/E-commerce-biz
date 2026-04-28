@@ -50,6 +50,7 @@ export const allProducts: Product[] = [
     category: "Fashion",
     categorySlug: "fashion",
     inStock: true,
+    stock: 12,
   },
   {
     id: "prod-2",
@@ -61,6 +62,7 @@ export const allProducts: Product[] = [
     category: "Fashion",
     categorySlug: "fashion",
     inStock: true,
+    stock: 8,
   },
   {
     id: "prod-3",
@@ -72,6 +74,7 @@ export const allProducts: Product[] = [
     category: "Electronics",
     categorySlug: "electronics",
     inStock: true,
+    stock: 10,
   },
   {
     id: "prod-4",
@@ -83,6 +86,7 @@ export const allProducts: Product[] = [
     category: "Electronics",
     categorySlug: "electronics",
     inStock: false,
+    stock: 0,
   },
   {
     id: "prod-5",
@@ -94,6 +98,7 @@ export const allProducts: Product[] = [
     category: "Home and Living",
     categorySlug: "home-living",
     inStock: true,
+    stock: 15,
   },
   {
     id: "prod-6",
@@ -105,6 +110,7 @@ export const allProducts: Product[] = [
     category: "Home and Living",
     categorySlug: "home-living",
     inStock: true,
+    stock: 6,
   },
   {
     id: "prod-7",
@@ -116,6 +122,7 @@ export const allProducts: Product[] = [
     category: "Beauty",
     categorySlug: "beauty",
     inStock: false,
+    stock: 0,
   },
   {
     id: "prod-8",
@@ -127,6 +134,6 @@ export const allProducts: Product[] = [
     category: "Beauty",
     categorySlug: "beauty",
     inStock: true,
+    stock: 20,
   },
 ];
-
