@@ -15,7 +15,7 @@ export default function CartPage() {
       <Container>
         <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Your Cart</h1>
+            <h1 className="text-4xl font-bold tracking-[-0.02em] text-slate-900 sm:text-5xl">Your Cart</h1>
             <p className="mt-1 text-sm text-slate-600">
               Review selected products, adjust quantities, and continue to checkout.
             </p>
@@ -25,7 +25,7 @@ export default function CartPage() {
             <button
               type="button"
               onClick={clearCart}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+              className="rounded-xl border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-100"
             >
               Clear Cart
             </button>
@@ -33,18 +33,18 @@ export default function CartPage() {
         </div>
 
         {!isHydrated ? (
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600">
+          <div className="premium-surface p-6 text-slate-600">
             Loading cart...
           </div>
         ) : items.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center sm:p-10">
+          <div className="premium-surface border-dashed p-8 text-center sm:p-10">
             <h2 className="text-xl font-semibold text-slate-900">Your cart is empty</h2>
             <p className="mt-2 text-sm text-slate-600">
               Start exploring products and add items to your cart.
             </p>
             <Link
               href="/shop"
-              className="mt-5 inline-flex rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-semibold !text-white transition hover:bg-brand-500 hover:!text-white"
+              className="premium-button mt-5 inline-flex px-5 py-2.5 text-sm font-semibold !text-white hover:!text-white"
             >
               Continue Shopping
             </Link>
@@ -64,7 +64,7 @@ export default function CartPage() {
               ))}
             </div>
 
-            <aside className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
+            <aside className="premium-surface p-5 sm:p-6">
               <h2 className="text-lg font-semibold text-slate-900">Order Summary</h2>
 
               <div className="mt-5 space-y-3 text-sm">
@@ -93,7 +93,7 @@ export default function CartPage() {
 
               <Link
                 href="/checkout"
-                className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-brand-700 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-brand-500 hover:!text-white"
+                className="premium-button mt-5 inline-flex w-full items-center justify-center px-5 py-3 text-sm font-semibold !text-white hover:!text-white"
               >
                 Proceed to Checkout
               </Link>

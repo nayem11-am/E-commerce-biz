@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, ShoppingBag, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useCart } from "@/hooks/useCart";
@@ -12,7 +12,7 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mainLinks = NAV_LINKS.filter((item) => item.href !== "/cart");
   const inlineMarqueeText =
-    "Get the best deal of late April. 10% discout on each product.";
+    "Premium picks, better prices, smooth checkout. New arrivals updated daily.";
   const cartCount = isHydrated ? items.length : null;
   const mobileLinks = [
     { label: "Home", href: "/" },
@@ -37,18 +37,25 @@ export function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/40 bg-white/50 shadow-sm backdrop-blur-xl">
-      <Container>
-        <nav className="flex h-16 items-center justify-between gap-3">
-          <Link href="/" className="text-lg font-semibold tracking-tight text-brand-700">
-            ShopVerse
-          </Link>
-
-          <div className="hidden min-w-0 flex-1 overflow-hidden md:block">
-            <div className="inline-marquee-track whitespace-nowrap text-sm font-medium text-slate-600">
-              <span className="inline-marquee-item">{inlineMarqueeText}</span>
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-slate-700/20 bg-slate-900/10 shadow-sm backdrop-blur-xl md:bg-slate-900/15">
+      <div className="h-7 overflow-hidden bg-slate-900 text-slate-100">
+        <Container>
+          <div className="marquee-wrap whitespace-nowrap text-xs font-medium leading-7 tracking-[0.02em]">
+            <div className="marquee-track">
+              <span className="marquee-item">{inlineMarqueeText}</span>
             </div>
           </div>
+        </Container>
+      </div>
+
+      <Container>
+        <nav className="flex h-16 items-center justify-between gap-3">
+          <Link href="/" className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-brand-700">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate-900/80 text-white">
+              <ShoppingBag className="h-4 w-4" aria-hidden="true" />
+            </span>
+            <span>ShopVerse</span>
+          </Link>
 
           <div className="flex items-center gap-2 sm:gap-3">
             <ul className="hidden items-center gap-2 text-sm font-medium text-slate-700 md:flex">
@@ -56,7 +63,7 @@ export function Navbar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="rounded-full px-2.5 py-1.5 transition duration-200 hover:bg-sky-100/80 hover:text-sky-900 hover:shadow-sm"
+                    className="relative px-2.5 py-1.5 text-slate-700 transition-colors duration-300 hover:text-slate-900 after:absolute after:bottom-0 after:left-2.5 after:h-[2px] after:w-0 after:rounded-full after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-[calc(100%-1.25rem)]"
                   >
                     {item.label}
                   </Link>
@@ -133,7 +140,7 @@ export function Navbar() {
               <Link
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="block rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 transition hover:bg-slate-100"
+                className="relative block px-4 py-3 text-sm font-semibold text-slate-800 transition-colors duration-300 hover:text-slate-900 after:absolute after:bottom-2 after:left-4 after:h-[2px] after:w-0 after:rounded-full after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-10"
               >
                 {item.label}
               </Link>
@@ -143,22 +150,39 @@ export function Navbar() {
       </aside>
 
       <style jsx>{`
-        .inline-marquee-track {
-          display: inline-block;
-          align-items: center;
-          width: max-content;
-          animation: inline-navbar-marquee 8s linear infinite;
+        .marquee-wrap {
+          position: relative;
+          overflow: hidden;
         }
-        .inline-marquee-item {
+        .marquee-track {
           display: inline-block;
-          padding-right: 1rem;
+          white-space: nowrap;
+          animation: top-navbar-marquee 18s linear infinite;
         }
-        @keyframes inline-navbar-marquee {
+        .marquee-item {
+          display: inline-block;
+          padding-right: 0;
+        }
+        @keyframes top-navbar-marquee {
           from {
             transform: translateX(100%);
           }
           to {
             transform: translateX(-100%);
+          }
+        }
+        @media (max-width: 767px) {
+          .marquee-track {
+            animation: none;
+            transform: translateX(0);
+            display: block;
+            max-width: 100%;
+          }
+          .marquee-item {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         }
       `}</style>

@@ -24,7 +24,7 @@ export function CartItem({ item, onIncrease, onDecrease, onSetQuantity, onRemove
   };
 
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">
+    <article className="premium-surface p-4 sm:p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <div className="relative h-24 w-full shrink-0 overflow-hidden rounded-xl bg-slate-100 sm:w-28">
           <Image
@@ -41,7 +41,7 @@ export function CartItem({ item, onIncrease, onDecrease, onSetQuantity, onRemove
             {item.category ?? "General"}
           </p>
           <Link href={`/product/${item.slug}`} className="block">
-            <h3 className="text-base font-semibold text-slate-900 transition hover:text-brand-700">
+            <h3 className="text-base font-semibold text-slate-900 transition hover:text-slate-700">
               {item.name}
             </h3>
           </Link>

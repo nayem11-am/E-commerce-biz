@@ -4,7 +4,7 @@ import { FOOTER_LINKS } from "@/lib/constants/navigation";
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-slate-200 bg-slate-50/80">
       <Container>
         <div className="flex flex-col items-start justify-between gap-6 py-8 text-sm text-slate-600 md:flex-row md:items-center">
           <p>(c) {new Date().getFullYear()} ShopVerse. All rights reserved.</p>

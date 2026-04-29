@@ -87,7 +87,7 @@ export function ProductActions({ product }: ProductActionsProps) {
           type="button"
           onClick={addToCart}
           disabled={!canPurchase || isInCart}
-          className="rounded-xl border border-brand-700 px-5 py-3 text-sm font-semibold text-brand-700 transition hover:bg-brand-50 disabled:cursor-not-allowed disabled:border-slate-300 disabled:text-slate-400"
+          className="rounded-xl border border-slate-900 px-5 py-3 text-sm font-semibold text-slate-900 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-100 disabled:cursor-not-allowed disabled:border-slate-300 disabled:text-slate-400"
         >
           {isInCart ? "Already in Cart" : "Add to Cart"}
         </button>
@@ -95,7 +95,7 @@ export function ProductActions({ product }: ProductActionsProps) {
           type="button"
           onClick={buyNow}
           disabled={!canPurchase}
-          className="rounded-xl bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-500 disabled:cursor-not-allowed disabled:bg-slate-300"
+          className="premium-button rounded-xl px-5 py-3 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:bg-slate-300"
         >
           Buy Now
         </button>

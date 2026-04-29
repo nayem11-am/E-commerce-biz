@@ -22,7 +22,7 @@ export function CategoryCard({ category, productCount }: CategoryCardProps) {
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="group block overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_10px_26px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(15,23,42,0.14)]"
+      className="group block overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(15,23,42,0.14)]"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-slate-100 via-slate-50 to-sky-100/60">
         <Image

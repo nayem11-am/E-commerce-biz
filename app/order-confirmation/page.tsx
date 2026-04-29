@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRef, useState, useSyncExternalStore } from "react";
 import { Container } from "@/components/common/Container";
 import { Invoice } from "@/components/order/Invoice";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import {
   getLastOrderServerSnapshot,
   readLastOrderFromStorage,
@@ -30,6 +31,7 @@ export default function OrderConfirmationPage() {
   );
   const [isDownloading, setIsDownloading] = useState(false);
   const invoiceRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const handleDownloadInvoice = async () => {
     if (!invoiceRef.current || !order) return;
@@ -74,14 +76,14 @@ export default function OrderConfirmationPage() {
     return (
       <section className="py-10 sm:py-12">
         <Container>
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center sm:p-10">
-            <h1 className="text-2xl font-bold text-slate-900">No recent order found</h1>
+          <div className="premium-surface border-dashed p-8 text-center sm:p-10">
+            <h1 className="text-2xl font-bold tracking-[-0.02em] text-slate-900">No recent order found</h1>
             <p className="mt-2 text-sm text-slate-600">
               Place a Cash on Delivery order to view confirmation details.
             </p>
             <Link
               href="/shop"
-              className="mt-5 inline-flex rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-semibold !text-white transition hover:bg-brand-500 hover:!text-white"
+              className="premium-button mt-5 inline-flex px-5 py-2.5 text-sm font-semibold !text-white hover:!text-white"
             >
               Continue Shopping
             </Link>
@@ -101,12 +103,12 @@ export default function OrderConfirmationPage() {
     <section className="py-10 sm:py-12">
       <Container>
         <div className="mx-auto max-w-5xl space-y-6">
-          <div className="rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-white p-6 sm:p-8">
+          <div className="premium-surface bg-gradient-to-r from-emerald-50 to-white p-6 sm:p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-start gap-4">
                 <SuccessIcon />
                 <div>
-                  <h1 className="text-2xl font-bold tracking-tight text-emerald-900 sm:text-3xl">
+                  <h1 className="text-2xl font-bold tracking-[-0.02em] text-emerald-900 sm:text-3xl">
                     Order Confirmed
                   </h1>
                   <p className="mt-2 text-sm text-emerald-800 sm:text-base">
@@ -127,7 +129,7 @@ export default function OrderConfirmationPage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
+            <div className="premium-surface p-5 sm:p-6">
               <h2 className="text-lg font-semibold text-slate-900">Customer Details</h2>
               <div className="mt-4 space-y-2 text-sm text-slate-700 sm:text-base">
                 <p>
@@ -151,7 +153,7 @@ export default function OrderConfirmationPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
+            <div className="premium-surface p-5 sm:p-6">
               <h2 className="text-lg font-semibold text-slate-900">Payment Method</h2>
               <p className="mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-800 sm:text-base">
                 Cash on Delivery. Please keep the payable amount ready when the order arrives.
@@ -174,20 +176,20 @@ export default function OrderConfirmationPage() {
               type="button"
               onClick={handleDownloadInvoice}
               disabled={isDownloading}
-              className="inline-flex items-center justify-center rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-500 disabled:cursor-not-allowed disabled:bg-slate-300"
+              className="premium-button inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:bg-slate-300"
             >
               {isDownloading ? "Preparing PDF..." : "Download Invoice"}
             </button>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-semibold !text-white transition hover:bg-brand-500 hover:!text-white"
+              className="premium-button inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold !text-white hover:!text-white"
             >
               Continue Shopping
             </Link>
           </div>
 
-          <div ref={invoiceRef}>
-            <Invoice order={order} />
+          <div ref={invoiceRef} className="w-full overflow-x-hidden">
+            <Invoice order={order} compact={isMobile} />
           </div>
         </div>
       </Container>

@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/hooks/useCart";
@@ -10,7 +11,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+function ProductCardBase({ product }: ProductCardProps) {
   const { addItem, items } = useCart();
   const isPlaceholderImage = product.image.endsWith(".svg");
   const isInCart = items.some((item) => item.id === product.id);
@@ -31,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_18px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(15,23,42,0.12)] sm:rounded-3xl">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(15,23,42,0.12)]">
       <Link href={`/product/${product.slug}`} className="block">
         <div className="relative h-32 overflow-hidden bg-gradient-to-br from-slate-100 via-slate-50 to-sky-100/60 sm:h-40 lg:h-48">
           <Image
@@ -57,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col space-y-2 p-3 sm:space-y-3 sm:p-4 lg:space-y-4 lg:p-5">
+      <div className="flex flex-1 flex-col space-y-2.5 p-3.5 sm:space-y-3 sm:p-4 lg:space-y-4 lg:p-5">
         <Link href={`/product/${product.slug}`} className="block">
           <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-slate-900 transition group-hover:text-brand-700 sm:text-base lg:text-lg">
             {product.name}
@@ -95,3 +96,7 @@ export function ProductCard({ product }: ProductCardProps) {
     </article>
   );
 }
+
+ProductCardBase.displayName = "ProductCard";
+
+export const ProductCard = memo(ProductCardBase);

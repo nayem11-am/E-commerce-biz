@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CategoryCard } from "@/components/common/CategoryCard";
 import { Container } from "@/components/common/Container";
-import { ProductCard } from "@/components/common/ProductCard";
+import { AnimatedProductGrid } from "@/components/common/AnimatedProductGrid";
 import { ScrollToTopOnReload } from "@/components/common/ScrollToTopOnReload";
 import { allProducts } from "@/lib/constants/catalogData";
 import { featuredProducts, homeCategories } from "@/lib/constants/homeData";
@@ -18,12 +18,12 @@ export default function HomePage() {
       <ScrollToTopOnReload />
       <section>
         <Container>
-          <div className="grid items-center gap-8 overflow-hidden rounded-3xl bg-gradient-to-r from-rose-200 via-orange-200 to-amber-200 px-5 py-10 text-slate-900 sm:px-8 sm:py-12 lg:grid-cols-2 lg:px-12">
+          <div className="grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-300/70 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-300 px-5 py-10 text-slate-900 shadow-[0_10px_28px_rgba(15,23,42,0.08)] sm:px-8 sm:py-12 lg:grid-cols-2 lg:px-12">
             <div>
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-rose-700">
                 Cash on Delivery Available
               </p>
-              <h1 className="max-w-xl text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              <h1 className="max-w-xl bg-gradient-to-r from-slate-900 to-slate-600 bg-clip-text text-4xl font-bold leading-[1.08] tracking-[-0.025em] text-transparent sm:text-5xl lg:text-6xl">
                 Discover Top Picks Across Every Category
               </h1>
               <p className="mt-4 max-w-lg text-sm text-slate-700 sm:text-base">
@@ -33,7 +33,7 @@ export default function HomePage() {
               <div className="mt-6">
                 <Link
                   href="/shop"
-                  className="inline-flex items-center gap-2 rounded-full border border-rose-300 bg-rose-500 px-5 py-2.5 text-sm font-semibold !text-white shadow-[0_8px_20px_rgba(136,19,55,0.16)] transition hover:-translate-y-0.5 hover:bg-rose-600 hover:!text-white"
+                  className="premium-button inline-flex items-center gap-2 border border-slate-300 px-5 py-2.5 text-sm font-semibold !text-white shadow-[0_8px_20px_rgba(15,23,42,0.18)] hover:!text-white"
                 >
                   Explore Shop
                   <span aria-hidden="true">-&gt;</span>
@@ -57,11 +57,11 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section id="shop-section">
+      <section id="shop-section" className="rounded-2xl bg-slate-100/70 py-4">
         <Container>
           <div className="mb-6 flex items-end justify-between gap-3">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Shop by Category</h2>
+              <h2 className="text-3xl font-bold tracking-[-0.015em] text-slate-900 sm:text-4xl">Shop by Category</h2>
               <p className="mt-1 text-sm text-slate-600">
                 Browse curated collections tailored to your needs.
               </p>
@@ -80,11 +80,11 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section>
+      <section className="rounded-2xl bg-slate-50/70 py-4">
         <Container>
           <div className="mb-6 flex items-end justify-between gap-3">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Featured Products</h2>
+              <h2 className="text-3xl font-bold tracking-[-0.015em] text-slate-900 sm:text-4xl">Featured Products</h2>
               <p className="mt-1 text-sm text-slate-600">
                 Handpicked products popular with our shoppers.
               </p>
@@ -97,11 +97,10 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <AnimatedProductGrid
+            products={featuredProducts}
+            className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6"
+          />
         </Container>
       </section>
     </div>

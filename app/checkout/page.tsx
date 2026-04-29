@@ -91,7 +91,7 @@ export default function CheckoutPage() {
     return (
       <section className="py-10 sm:py-12">
         <Container>
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600">
+          <div className="premium-surface p-6 text-slate-600">
             Loading checkout...
           </div>
         </Container>
@@ -103,7 +103,7 @@ export default function CheckoutPage() {
     <section className="py-10 sm:py-12">
       <Container>
         <div className="mb-7">
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-[-0.02em] text-slate-900 sm:text-5xl">
             Checkout (Cash on Delivery)
           </h1>
           <p className="mt-2 text-sm text-slate-600 sm:text-base">
@@ -113,14 +113,14 @@ export default function CheckoutPage() {
         </div>
 
         {items.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center sm:p-10">
+          <div className="premium-surface border-dashed p-8 text-center sm:p-10">
             <h2 className="text-xl font-semibold text-slate-900">Your cart is empty</h2>
             <p className="mt-2 text-sm text-slate-600">
               Add items to cart before placing a COD order.
             </p>
             <Link
               href="/shop"
-              className="mt-5 inline-flex rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-semibold !text-white transition hover:bg-brand-500 hover:!text-white"
+              className="premium-button mt-5 inline-flex px-5 py-2.5 text-sm font-semibold !text-white hover:!text-white"
             >
               Browse Products
             </Link>
@@ -129,7 +129,7 @@ export default function CheckoutPage() {
           <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start">
             <form
               onSubmit={handleSubmit}
-              className="space-y-5 rounded-2xl border border-slate-200 bg-white p-5 sm:p-6"
+              className="premium-surface space-y-5 p-5 sm:p-6"
               noValidate
             >
               <div>
@@ -142,7 +142,7 @@ export default function CheckoutPage() {
                   type="text"
                   value={values.fullName}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-200"
                   placeholder="John Doe"
                   autoComplete="name"
                 />
@@ -164,7 +164,7 @@ export default function CheckoutPage() {
                   type="tel"
                   value={values.phoneNumber}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-200"
                   placeholder="+1 555 123 4567"
                   autoComplete="tel"
                   required
@@ -184,7 +184,7 @@ export default function CheckoutPage() {
                   value={values.address}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-200"
                   placeholder="Street, city, postal code"
                 />
                 {errors.address && (
@@ -202,20 +202,20 @@ export default function CheckoutPage() {
                   value={values.note}
                   onChange={handleChange}
                   rows={3}
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-200"
                   placeholder="Landmark or delivery instructions"
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center rounded-xl bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-500"
+                className="premium-button inline-flex w-full items-center justify-center px-5 py-3 text-sm font-semibold text-white"
               >
                 Place Order
               </button>
             </form>
 
-            <aside className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
+            <aside className="premium-surface p-5 sm:p-6">
               <h2 className="text-lg font-semibold text-slate-900">Cart Summary</h2>
 
               <ul className="mt-4 space-y-3 border-b border-slate-200 pb-4">

@@ -13,7 +13,7 @@ export default function ShopPage() {
     <section className="py-10 sm:py-12">
       <Container>
         <div className="mb-7">
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-[-0.02em] text-slate-900 sm:text-5xl">
             Shop Products
           </h1>
           <p className="mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">

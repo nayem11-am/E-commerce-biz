@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ProductCard } from "@/components/common/ProductCard";
+import { AnimatedProductGrid } from "@/components/common/AnimatedProductGrid";
 import type { ProductCategory } from "@/lib/constants/catalogData";
 import type { Product } from "@/types/product";
 
@@ -44,10 +44,10 @@ export function ShopCatalog({
               key={option.slug}
               type="button"
               onClick={() => setActiveCategory(option.slug)}
-              className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+              className={`rounded-full border px-4 py-2 text-sm font-medium transition duration-300 ${
                 isActive
-                  ? "border-brand-700 bg-brand-700 text-white"
-                  : "border-slate-300 bg-white text-slate-700 hover:border-brand-500 hover:text-brand-700"
+                  ? "border-slate-900 bg-slate-900 text-white"
+                  : "border-slate-300 bg-white text-slate-700 hover:-translate-y-0.5 hover:border-slate-400 hover:text-slate-900"
               }`}
             >
               {option.name}
@@ -57,15 +57,15 @@ export function ShopCatalog({
       </div>
 
       {filteredProducts.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
+        <div className="premium-surface border-dashed p-10 text-center">
           <p className="text-slate-600">No products found for this category.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 lg:grid-cols-4">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <AnimatedProductGrid
+          key={activeCategory}
+          products={filteredProducts}
+          className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6"
+        />
       )}
     </div>
   );

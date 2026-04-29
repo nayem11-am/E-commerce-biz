@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </Link>
         </div>
 
-        <div className="grid gap-7 rounded-3xl border border-slate-200 bg-white p-5 sm:gap-8 sm:p-7 lg:grid-cols-2">
+        <div className="premium-surface grid gap-7 p-5 sm:gap-8 sm:p-7 lg:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">
             <Image
               src={product.image}
@@ -65,7 +65,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <p className="text-sm font-medium uppercase tracking-wide text-slate-500">
                 {product.category}
               </p>
-              <h1 className="text-3xl font-bold tracking-tight text-slate-900">{product.name}</h1>
+              <h1 className="text-3xl font-bold tracking-[-0.02em] text-slate-900">{product.name}</h1>
               <p className="text-base text-slate-600">{product.description}</p>
             </div>
 
