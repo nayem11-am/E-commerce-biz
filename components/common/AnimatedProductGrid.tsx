@@ -14,7 +14,7 @@ interface AnimatedProductGridProps {
 export function AnimatedProductGrid({ products, className }: AnimatedProductGridProps) {
   const isMobile = useIsMobile();
   const shouldReduceMotion = useReducedMotion();
-  const useLightweightMode = isMobile || shouldReduceMotion;
+  const useLightweightMode = isMobile || Boolean(shouldReduceMotion);
 
   const containerVariants = staggerContainer(useLightweightMode);
   const itemVariants = slideInLeft(useLightweightMode);
