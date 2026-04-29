@@ -4,14 +4,13 @@ import { useLayoutEffect } from "react";
 
 export function ScrollToTopOnReload() {
   useLayoutEffect(() => {
+    const legacyNavigation = (performance as Performance & {
+      navigation?: { type?: number };
+    }).navigation;
+
     const [entry] = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
     const isReload =
-      entry?.type === "reload" ||
-      // Fallback for browsers that still expose the legacy navigation API.
-      (typeof performance !== "undefined" &&
-        "navigation" in performance &&
-        // @ts-expect-error legacy API support check
-        performance.navigation?.type === 1);
+      entry?.type === "reload" || legacyNavigation?.type === 1;
 
     if (!isReload) return;
 
