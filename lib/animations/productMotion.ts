@@ -1,16 +1,14 @@
 import type { Variants } from "framer-motion";
 
 export function slideInLeft(isMobile: boolean): Variants {
-  const xDistance = isMobile ? -18 : -30;
-
   return {
-    hidden: { opacity: 0, x: xDistance },
+    hidden: { opacity: 0, x: isMobile ? 0 : -20 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: isMobile ? 0.2 : 0.32,
-        ease: [0.22, 1, 0.36, 1],
+        duration: isMobile ? 0.25 : 0.32,
+        ease: "easeOut",
       },
     },
   };
@@ -30,5 +28,5 @@ export function staggerContainer(isMobile: boolean): Variants {
 
 export const inViewOnce = {
   once: true,
-  amount: 0.18,
+  amount: 0.1,
 } as const;

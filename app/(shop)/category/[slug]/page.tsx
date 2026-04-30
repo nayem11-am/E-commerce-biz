@@ -37,10 +37,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <section className="py-10 sm:py-12">
       <Container>
         <div className="mb-7">
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-3xl font-bold tracking-tight text-white">
             {category.name} Collection
           </h1>
-          <p className="mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">
+          <p className="mt-2 max-w-2xl text-sm text-zinc-400 sm:text-base">
             {category.description} Use filters below to switch categories without leaving
             the page.
           </p>

@@ -6,135 +6,156 @@ interface InvoiceProps {
   order: OrderSummary;
   compact?: boolean;
 }
+
 function getStyles(compact: boolean) {
   return {
     wrapper: {
       width: "100%",
       overflowX: "hidden",
       backgroundColor: "#ffffff",
-      border: "1px solid #e2e8f0",
+      border: "1px solid #e5e7eb",
       borderRadius: "16px",
-      padding: compact ? "16px" : "28px",
-      color: "#0f172a",
-      fontFamily: "Arial, Helvetica, sans-serif",
+      padding: compact ? "24px" : "40px",
+      color: "#111827",
+      fontFamily: "Inter, Roboto, Arial, sans-serif",
     } satisfies CSSProperties,
     header: {
       display: "flex",
       justifyContent: "space-between",
-      gap: "16px",
-      alignItems: "flex-start",
-      paddingBottom: "16px",
-      borderBottom: "1px solid #e2e8f0",
+      gap: "24px",
+      alignItems: "center",
+      paddingBottom: "24px",
+      borderBottom: "1px solid #e5e7eb",
       flexWrap: "wrap",
     } satisfies CSSProperties,
-  eyebrow: {
-    fontSize: "12px",
-    fontWeight: 700,
-    letterSpacing: "0.14em",
-    textTransform: "uppercase",
-    color: "#475569",
-    margin: 0,
-  } satisfies CSSProperties,
+    eyebrow: {
+      fontSize: "12px",
+      fontWeight: 700,
+      letterSpacing: "0.2em",
+      textTransform: "uppercase",
+      color: "#dc2626", // red-600
+      margin: 0,
+    } satisfies CSSProperties,
     brand: {
-      fontSize: compact ? "24px" : "30px",
-    margin: "8px 0 4px 0",
-    fontWeight: 700,
-    lineHeight: 1.2,
+      fontSize: compact ? "28px" : "36px",
+      margin: "8px 0 4px 0",
+      fontWeight: 800,
+      lineHeight: 1.2,
+      color: "#111827",
+      letterSpacing: "-0.02em",
     } satisfies CSSProperties,
     sub: {
       margin: 0,
-      color: "#475569",
-      fontSize: compact ? "12px" : "14px",
+      color: "#6b7280",
+      fontSize: compact ? "13px" : "15px",
     } satisfies CSSProperties,
     meta: {
-      fontSize: compact ? "12px" : "14px",
-      color: "#334155",
+      fontSize: compact ? "13px" : "15px",
+      color: "#6b7280",
       lineHeight: 1.7,
+      textAlign: "right",
+    } satisfies CSSProperties,
+    metaLabel: {
+      color: "#111827",
+      fontWeight: 600,
     } satisfies CSSProperties,
     section: {
-      marginTop: "20px",
-      backgroundColor: "#f8fafc",
-      border: "1px solid #e2e8f0",
+      marginTop: "32px",
+      backgroundColor: "#f9fafb",
+      border: "1px solid #e5e7eb",
       borderRadius: "12px",
-      padding: compact ? "12px" : "14px",
+      padding: compact ? "20px" : "28px",
     } satisfies CSSProperties,
-  sectionTitle: {
-    margin: 0,
-    fontSize: "12px",
-    fontWeight: 700,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase",
-    color: "#334155",
-  } satisfies CSSProperties,
-    detailBlock: {
-      marginTop: "10px",
-      fontSize: compact ? "12px" : "14px",
-      color: "#334155",
-      lineHeight: 1.7,
+    sectionTitle: {
+      margin: 0,
+      fontSize: "12px",
+      fontWeight: 700,
+      letterSpacing: "0.1em",
+      textTransform: "uppercase",
+      color: "#dc2626",
+      marginBottom: "16px",
     } satisfies CSSProperties,
-  itemsTitle: {
-    marginTop: "22px",
-    marginBottom: "10px",
-    fontSize: "12px",
-    fontWeight: 700,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase",
-    color: "#334155",
-  } satisfies CSSProperties,
+    detailGrid: {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: "16px",
+      fontSize: compact ? "13px" : "15px",
+      color: "#4b5563",
+      lineHeight: 1.6,
+    } satisfies CSSProperties,
+    itemsTitle: {
+      marginTop: "40px",
+      marginBottom: "16px",
+      fontSize: "12px",
+      fontWeight: 700,
+      letterSpacing: "0.1em",
+      textTransform: "uppercase",
+      color: "#6b7280",
+    } satisfies CSSProperties,
     tableWrap: {
       width: "100%",
       overflowX: "hidden",
-      border: "1px solid #e2e8f0",
+      border: "1px solid #e5e7eb",
       borderRadius: "12px",
+      backgroundColor: "#ffffff",
     } satisfies CSSProperties,
     table: {
       width: "100%",
       borderCollapse: "collapse",
       tableLayout: "fixed",
-      fontSize: compact ? "12px" : "14px",
+      fontSize: compact ? "13px" : "15px",
     } satisfies CSSProperties,
-  thead: {
-    backgroundColor: "#f8fafc",
-    color: "#334155",
-  } satisfies CSSProperties,
+    thead: {
+      backgroundColor: "#f3f4f6",
+      color: "#111827",
+    } satisfies CSSProperties,
     th: {
-      padding: compact ? "8px 8px" : "10px 12px",
+      padding: compact ? "12px 16px" : "16px 20px",
       textAlign: "left",
-      borderBottom: "1px solid #e2e8f0",
-      fontWeight: 700,
+      borderBottom: "1px solid #e5e7eb",
+      fontWeight: 600,
       overflow: "hidden",
       textOverflow: "ellipsis",
       whiteSpace: "nowrap",
     } satisfies CSSProperties,
     td: {
-      padding: compact ? "8px 8px" : "10px 12px",
-      borderBottom: "1px solid #e2e8f0",
-      color: "#334155",
+      padding: compact ? "12px 16px" : "16px 20px",
+      borderBottom: "1px solid #e5e7eb",
+      color: "#4b5563",
       overflow: "hidden",
       textOverflow: "ellipsis",
       whiteSpace: "nowrap",
     } satisfies CSSProperties,
-  footer: {
-    marginTop: "18px",
-    paddingTop: "14px",
-    borderTop: "1px solid #e2e8f0",
-  } satisfies CSSProperties,
+    footer: {
+      marginTop: "32px",
+      paddingTop: "24px",
+      borderTop: "1px solid #e5e7eb",
+    } satisfies CSSProperties,
     totalRow: {
       display: "flex",
-      justifyContent: "space-between",
+      justifyContent: "flex-end",
+      gap: "24px",
       alignItems: "center",
-      fontSize: compact ? "16px" : "18px",
-      fontWeight: 700,
+      fontSize: compact ? "18px" : "24px",
+      fontWeight: 800,
+      color: "#111827",
+    } satisfies CSSProperties,
+    totalLabel: {
+      color: "#4b5563",
+      fontWeight: 500,
+      fontSize: compact ? "14px" : "16px",
     } satisfies CSSProperties,
     codNote: {
-      marginTop: "12px",
-      backgroundColor: "#ecfdf5",
-      border: "1px solid #a7f3d0",
-      borderRadius: "10px",
-      padding: "10px 12px",
-      fontSize: compact ? "12px" : "13px",
-      color: "#065f46",
+      marginTop: "24px",
+      backgroundColor: "#fef2f2",
+      border: "1px solid #fecaca",
+      borderRadius: "12px",
+      padding: "16px",
+      fontSize: compact ? "13px" : "14px",
+      color: "#991b1b",
       lineHeight: 1.6,
+      textAlign: "center",
+      fontWeight: 500,
     } satisfies CSSProperties,
   } as const;
 }
@@ -151,42 +172,46 @@ export function Invoice({ order, compact = false }: InvoiceProps) {
     <article style={styles.wrapper}>
       <header style={styles.header}>
         <div>
-          <p style={styles.eyebrow}>Invoice</p>
+          <p style={styles.eyebrow}>Receipt</p>
           <h2 style={styles.brand}>ShopVerse</h2>
-          <p style={styles.sub}>Cash on Delivery Order Invoice</p>
+          <p style={styles.sub}>Official Cash on Delivery Invoice</p>
         </div>
 
         <div style={styles.meta}>
           <div>
-            <strong>Order ID:</strong> {order.orderId}
+            <span style={styles.metaLabel}>Order ID:</span> {order.orderId}
           </div>
-          <div>
-            <strong>Order Date:</strong> {orderDate}
+          <div style={{ marginTop: "4px" }}>
+            <span style={styles.metaLabel}>Date:</span> {orderDate}
           </div>
         </div>
       </header>
 
       <section style={styles.section}>
         <h3 style={styles.sectionTitle}>Customer Details</h3>
-        <div style={styles.detailBlock}>
+        <div style={styles.detailGrid}>
           <div>
-            <strong>Name:</strong> {order.customer.fullName}
+            <div style={styles.metaLabel}>Name</div>
+            <div style={{ marginTop: "2px" }}>{order.customer.fullName}</div>
           </div>
           <div>
-            <strong>Phone:</strong> {order.customer.phoneNumber}
+            <div style={styles.metaLabel}>Phone</div>
+            <div style={{ marginTop: "2px" }}>{order.customer.phoneNumber}</div>
           </div>
-          <div>
-            <strong>Address:</strong> {order.customer.address}
+          <div style={{ gridColumn: "1 / -1" }}>
+            <div style={styles.metaLabel}>Delivery Address</div>
+            <div style={{ marginTop: "2px" }}>{order.customer.address}</div>
           </div>
           {order.customer.note ? (
-            <div>
-              <strong>Note:</strong> {order.customer.note}
+            <div style={{ gridColumn: "1 / -1" }}>
+              <div style={styles.metaLabel}>Delivery Note</div>
+              <div style={{ marginTop: "2px" }}>{order.customer.note}</div>
             </div>
           ) : null}
         </div>
       </section>
 
-      <h3 style={styles.itemsTitle}>Ordered Items</h3>
+      <h3 style={styles.itemsTitle}>Order Summary</h3>
       <div style={styles.tableWrap}>
         <table style={styles.table}>
           <thead style={styles.thead}>
@@ -214,7 +239,7 @@ export function Invoice({ order, compact = false }: InvoiceProps) {
                     ...styles.td,
                     textAlign: "right",
                     fontWeight: 700,
-                    color: "#0f172a",
+                    color: "#111827",
                     borderBottom: index === order.items.length - 1 ? 0 : styles.td.borderBottom,
                   }}
                 >
@@ -228,11 +253,11 @@ export function Invoice({ order, compact = false }: InvoiceProps) {
 
       <footer style={styles.footer}>
         <div style={styles.totalRow}>
-          <span>Total Price</span>
+          <span style={styles.totalLabel}>Total Payable</span>
           <span>{formatCurrency(order.totalPrice)}</span>
         </div>
         <p style={styles.codNote}>
-          Payment Method: Cash on Delivery. Please keep the exact amount ready at delivery.
+          Payment Method: Cash on Delivery. Please keep the exact amount ready upon delivery.
         </p>
       </footer>
     </article>

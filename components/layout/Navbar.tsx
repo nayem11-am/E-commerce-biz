@@ -37,8 +37,8 @@ export function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-slate-700/20 bg-slate-900/10 shadow-sm backdrop-blur-xl md:bg-slate-900/15">
-      <div className="h-7 overflow-hidden bg-slate-900 text-slate-100">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-zinc-800 bg-black/90 shadow-sm backdrop-blur-xl md:bg-black/95">
+      <div className="hidden h-7 overflow-hidden bg-zinc-900 text-zinc-300 md:block">
         <Container>
           <div className="marquee-wrap whitespace-nowrap text-xs font-medium leading-7 tracking-[0.02em]">
             <div className="marquee-track">
@@ -50,20 +50,20 @@ export function Navbar() {
 
       <Container>
         <nav className="flex h-16 items-center justify-between gap-3">
-          <Link href="/" className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-brand-700">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate-900/80 text-white">
+          <Link href="/" className="group inline-flex items-center gap-2 text-xl font-black tracking-tighter">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-red-600 text-white shadow-[0_0_15px_rgba(229,9,20,0.5)] transition-transform duration-300 group-hover:scale-110">
               <ShoppingBag className="h-4 w-4" aria-hidden="true" />
             </span>
-            <span>ShopVerse</span>
+            <span className="bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent">ShopVerse</span>
           </Link>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <ul className="hidden items-center gap-2 text-sm font-medium text-slate-700 md:flex">
+            <ul className="hidden items-center gap-2 text-sm font-medium text-slate-300 md:flex">
               {mainLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="relative px-2.5 py-1.5 text-slate-700 transition-colors duration-300 hover:text-slate-900 after:absolute after:bottom-0 after:left-2.5 after:h-[2px] after:w-0 after:rounded-full after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-[calc(100%-1.25rem)]"
+                    className="relative px-2.5 py-1.5 text-zinc-400 transition-colors duration-300 hover:text-white after:absolute after:bottom-0 after:left-2.5 after:h-[2px] after:w-0 after:rounded-full after:bg-red-600 after:transition-all after:duration-300 hover:after:w-[calc(100%-1.25rem)]"
                   >
                     {item.label}
                   </Link>
@@ -71,19 +71,10 @@ export function Navbar() {
               ))}
             </ul>
 
-            <button
-              type="button"
-              aria-label="Open navigation menu"
-              onClick={() => setIsMenuOpen(true)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-white/70 text-slate-800 shadow-sm transition hover:bg-white md:hidden"
-            >
-              <Menu className="h-5 w-5" aria-hidden="true" />
-            </button>
-
             <Link
               href="/cart"
               aria-label={`Cart (${cartCount ?? 0} items)`}
-              className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-white/70 text-slate-800 shadow-sm transition hover:bg-white"
+              className="relative inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-100 shadow-sm transition hover:bg-zinc-800"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -99,17 +90,26 @@ export function Navbar() {
                 <path d="M3 4h2l2.1 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.78L20 8H7.2" />
               </svg>
               {cartCount !== null ? (
-                <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-700 px-1 text-[11px] font-semibold leading-none text-white">
+                <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[11px] font-semibold leading-none text-white">
                   {cartCount}
                 </span>
               ) : null}
             </Link>
+
+            <button
+              type="button"
+              aria-label="Open navigation menu"
+              onClick={() => setIsMenuOpen(true)}
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-100 shadow-sm transition hover:bg-zinc-800 md:hidden"
+            >
+              <Menu className="h-6 w-6" aria-hidden="true" />
+            </button>
           </div>
         </nav>
       </Container>
 
       <div
-        className={`fixed inset-0 z-40 bg-slate-900/45 transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 bg-black/60 transition-opacity duration-300 md:hidden ${
           isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setIsMenuOpen(false)}
@@ -117,20 +117,20 @@ export function Navbar() {
       />
 
       <aside
-        className={`fixed left-0 top-0 z-50 h-screen w-[82%] max-w-xs border-r border-slate-200 bg-white shadow-2xl transition-transform duration-300 md:hidden ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed right-0 top-0 z-50 h-screen w-[82%] max-w-xs border-l border-zinc-800 bg-zinc-950 shadow-2xl transition-transform duration-300 md:hidden ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         aria-label="Mobile navigation drawer"
       >
-        <div className="flex h-16 items-center justify-between border-b border-slate-200 px-5">
-          <p className="text-base font-semibold text-brand-700">Menu</p>
+        <div className="flex h-16 items-center justify-between border-b border-zinc-800 px-5">
+          <p className="text-base font-semibold text-white">Menu</p>
           <button
             type="button"
             aria-label="Close navigation menu"
             onClick={() => setIsMenuOpen(false)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:bg-slate-100"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
           >
-            <X className="h-5 w-5" aria-hidden="true" />
+            <X className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
 
@@ -140,7 +140,7 @@ export function Navbar() {
               <Link
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="relative block px-4 py-3 text-sm font-semibold text-slate-800 transition-colors duration-300 hover:text-slate-900 after:absolute after:bottom-2 after:left-4 after:h-[2px] after:w-0 after:rounded-full after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-10"
+                className="relative block px-4 py-3 text-sm font-semibold text-zinc-300 transition-colors duration-300 hover:text-white after:absolute after:bottom-2 after:left-4 after:h-[2px] after:w-0 after:rounded-full after:bg-red-600 after:transition-all after:duration-300 hover:after:w-10"
               >
                 {item.label}
               </Link>

@@ -39,17 +39,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <section className="py-10 sm:py-12">
       <Container>
-        <div className="mb-5">
-          <Link
-            href={`/category/${product.categorySlug}`}
-            className="text-sm font-medium text-brand-700 transition hover:text-brand-500"
-          >
-            Back to {product.category}
-          </Link>
-        </div>
 
         <div className="premium-surface grid gap-7 p-5 sm:gap-8 sm:p-7 lg:grid-cols-2">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-800">
             <Image
               src={product.image}
               alt={product.name}
@@ -62,22 +54,22 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <div className="flex flex-col justify-between gap-6">
             <div className="space-y-3">
-              <p className="text-sm font-medium uppercase tracking-wide text-slate-500">
+              <p className="text-sm font-medium uppercase tracking-wide text-zinc-500">
                 {product.category}
               </p>
-              <h1 className="text-3xl font-bold tracking-[-0.02em] text-slate-900">{product.name}</h1>
-              <p className="text-base text-slate-600">{product.description}</p>
+              <h1 className="text-3xl font-bold tracking-[-0.02em] text-white">{product.name}</h1>
+              <p className="text-base text-zinc-400">{product.description}</p>
             </div>
 
             <div className="space-y-4">
-              <p className="text-3xl font-bold text-slate-900">
+              <p className="text-3xl font-bold text-white">
                 {formatCurrency(product.price)}
               </p>
               <p
                 className={`inline-flex rounded-full px-3 py-1 text-sm font-semibold ${
                   product.inStock
-                    ? "bg-emerald-100 text-emerald-700"
-                    : "bg-rose-100 text-rose-700"
+                    ? "bg-green-900/30 text-green-400"
+                    : "bg-red-900/30 text-red-400"
                 }`}
               >
                 {product.inStock ? "In Stock" : "Out of Stock"}

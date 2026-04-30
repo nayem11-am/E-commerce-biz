@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InfoPageLayout } from "@/components/common/InfoPageLayout";
+import { AnimatedSection } from "@/components/common/AnimatedSection";
 
 const faqs = [
   {
@@ -40,30 +41,30 @@ export default function HelpPage() {
       title="Help Center"
       description="Find quick answers to common questions about orders, delivery, and Cash on Delivery."
     >
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold text-slate-900">Frequently Asked Questions</h2>
+      <AnimatedSection delay={0.1}>
+        <h2 className="text-xl font-semibold text-white">Frequently Asked Questions</h2>
         <div className="space-y-3">
           {faqs.map((faq) => (
             <details
               key={faq.question}
-              className="rounded-xl border border-slate-200 bg-slate-50 p-4 open:bg-white"
+              className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 open:bg-zinc-900 transition-colors"
             >
-              <summary className="cursor-pointer list-none pr-6 text-sm font-semibold text-slate-900 sm:text-base">
+              <summary className="cursor-pointer list-none pr-6 text-sm font-semibold text-white sm:text-base">
                 {faq.question}
               </summary>
-              <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">{faq.answer}</p>
+              <p className="mt-3 text-sm leading-7 text-zinc-300 sm:text-base">{faq.answer}</p>
             </details>
           ))}
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-slate-900">Need More Help?</h2>
-        <p className="text-sm leading-7 text-slate-700 sm:text-base">
+      <AnimatedSection delay={0.2}>
+        <h2 className="text-xl font-semibold text-white">Need More Help?</h2>
+        <p className="text-sm leading-7 text-zinc-300 sm:text-base">
           If your question is not listed above, reach out to our support team with your
           order ID and issue details. We aim to respond quickly during business hours.
         </p>
-      </section>
+      </AnimatedSection>
     </InfoPageLayout>
   );
 }

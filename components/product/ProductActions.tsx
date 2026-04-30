@@ -48,24 +48,24 @@ export function ProductActions({ product }: ProductActionsProps) {
   return (
     <div className="space-y-4">
       <div>
-        <p className="mb-2 text-sm font-medium text-slate-700">Quantity</p>
-        <div className="inline-flex items-center overflow-hidden rounded-xl border border-slate-300 bg-white">
+        <p className="mb-2 text-sm font-medium text-zinc-400">Quantity</p>
+        <div className="inline-flex items-center overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900">
           <button
             type="button"
             onClick={decreaseQuantity}
-            className="h-11 w-11 text-lg font-semibold text-slate-700 transition hover:bg-slate-100"
+            className="h-11 w-11 text-lg font-semibold text-zinc-300 transition hover:bg-zinc-800"
             aria-label="Decrease quantity"
             disabled={!canPurchase || isInCart}
           >
             -
           </button>
-          <div className="flex h-11 w-12 items-center justify-center border-x border-slate-300 text-sm font-semibold text-slate-900">
+          <div className="flex h-11 w-12 items-center justify-center border-x border-zinc-700 text-sm font-semibold text-white">
             {quantity}
           </div>
           <button
             type="button"
             onClick={increaseQuantity}
-            className="h-11 w-11 text-lg font-semibold text-slate-700 transition hover:bg-slate-100"
+            className="h-11 w-11 text-lg font-semibold text-zinc-300 transition hover:bg-zinc-800"
             aria-label="Increase quantity"
             disabled={!canPurchase || isInCart}
           >
@@ -73,10 +73,10 @@ export function ProductActions({ product }: ProductActionsProps) {
           </button>
         </div>
         {!isInCart && canPurchase ? (
-          <p className="mt-2 text-xs text-slate-500">Available stock: {stockLimit}</p>
+          <p className="mt-2 text-xs text-zinc-500">Available stock: {stockLimit}</p>
         ) : null}
         {isInCart ? (
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-zinc-500">
             This product is already in cart. Change quantity from cart page.
           </p>
         ) : null}
@@ -87,7 +87,7 @@ export function ProductActions({ product }: ProductActionsProps) {
           type="button"
           onClick={addToCart}
           disabled={!canPurchase || isInCart}
-          className="rounded-xl border border-slate-900 px-5 py-3 text-sm font-semibold text-slate-900 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-100 disabled:cursor-not-allowed disabled:border-slate-300 disabled:text-slate-400"
+          className="rounded-xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:border-zinc-800 disabled:text-zinc-600"
         >
           {isInCart ? "Already in Cart" : "Add to Cart"}
         </button>
@@ -95,7 +95,7 @@ export function ProductActions({ product }: ProductActionsProps) {
           type="button"
           onClick={buyNow}
           disabled={!canPurchase}
-          className="premium-button rounded-xl px-5 py-3 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:bg-slate-300"
+          className="premium-button rounded-xl px-5 py-3 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
         >
           Buy Now
         </button>

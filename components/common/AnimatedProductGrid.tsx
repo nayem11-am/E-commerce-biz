@@ -19,18 +19,6 @@ export function AnimatedProductGrid({ products, className }: AnimatedProductGrid
   const containerVariants = staggerContainer(useLightweightMode);
   const itemVariants = slideInLeft(useLightweightMode);
 
-  if (useLightweightMode) {
-    return (
-      <div className={className}>
-        {products.map((product) => (
-          <div key={product.id}>
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   return (
     <LazyMotion features={domAnimation}>
       <m.div
@@ -41,7 +29,11 @@ export function AnimatedProductGrid({ products, className }: AnimatedProductGrid
         viewport={inViewOnce}
       >
         {products.map((product) => (
-          <m.div key={product.id} variants={itemVariants} style={{ willChange: "transform, opacity" }}>
+          <m.div 
+            key={product.id} 
+            variants={itemVariants} 
+            style={{ willChange: useLightweightMode ? "opacity" : "transform, opacity" }}
+          >
             <ProductCard product={product} />
           </m.div>
         ))}

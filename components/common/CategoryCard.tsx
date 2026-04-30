@@ -22,9 +22,9 @@ export function CategoryCard({ category, productCount }: CategoryCardProps) {
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="group block overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(15,23,42,0.14)]"
+      className="group block overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-zinc-700 hover:shadow-[0_14px_32px_rgba(229,9,20,0.15)]"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-slate-100 via-slate-50 to-sky-100/60">
+      <div className="relative aspect-[16/10] overflow-hidden bg-zinc-800">
         <Image
           src={category.image}
           alt={category.name}
@@ -37,19 +37,19 @@ export function CategoryCard({ category, productCount }: CategoryCardProps) {
 
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
 
-        <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-slate-800 backdrop-blur">
+        <span className="absolute right-3 top-3 rounded-full bg-red-600/90 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur">
           {productCount} items
         </span>
 
         <div className="absolute inset-x-0 bottom-0 p-4">
-          <h3 className="text-lg font-semibold leading-tight text-white transition group-hover:text-sky-100">
+          <h3 className="text-lg font-bold tracking-tight text-white transition group-hover:text-red-100">
             {category.name}
           </h3>
         </div>
       </div>
 
       <div className="p-4">
-        <p className="line-clamp-2 text-sm leading-relaxed text-slate-600">{category.description}</p>
+        <p className="line-clamp-2 text-sm leading-relaxed text-zinc-400">{category.description}</p>
       </div>
     </Link>
   );

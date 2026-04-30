@@ -56,7 +56,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
     >
-      <body className="min-h-screen text-slate-900">
+      <body className="min-h-screen bg-black text-white">
         <AppProviders>
           <div className="flex min-h-screen flex-col">
             <Navbar />

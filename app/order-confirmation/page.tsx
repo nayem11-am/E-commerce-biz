@@ -41,7 +41,7 @@ export default function OrderConfirmationPage() {
       const canvas = await html2canvas(invoiceRef.current, {
         scale: 2,
         useCORS: true,
-        backgroundColor: "#ffffff",
+        backgroundColor: "#09090b",
       });
 
       const imageData = canvas.toDataURL("image/png");
@@ -76,9 +76,9 @@ export default function OrderConfirmationPage() {
     return (
       <section className="py-10 sm:py-12">
         <Container>
-          <div className="premium-surface border-dashed p-8 text-center sm:p-10">
-            <h1 className="text-2xl font-bold tracking-[-0.02em] text-slate-900">No recent order found</h1>
-            <p className="mt-2 text-sm text-slate-600">
+          <div className="premium-surface border-dashed border-zinc-800 p-8 text-center sm:p-10">
+            <h1 className="text-2xl font-bold tracking-[-0.02em] text-white">No recent order found</h1>
+            <p className="mt-2 text-sm text-zinc-400">
               Place a Cash on Delivery order to view confirmation details.
             </p>
             <Link
@@ -103,64 +103,64 @@ export default function OrderConfirmationPage() {
     <section className="py-10 sm:py-12">
       <Container>
         <div className="mx-auto max-w-5xl space-y-6">
-          <div className="premium-surface bg-gradient-to-r from-emerald-50 to-white p-6 sm:p-8">
+          <div className="premium-surface bg-gradient-to-r from-emerald-900/20 to-zinc-900 p-6 sm:p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-start gap-4">
                 <SuccessIcon />
                 <div>
-                  <h1 className="text-2xl font-bold tracking-[-0.02em] text-emerald-900 sm:text-3xl">
+                  <h1 className="text-2xl font-bold tracking-[-0.02em] text-emerald-400 sm:text-3xl">
                     Order Confirmed
                   </h1>
-                  <p className="mt-2 text-sm text-emerald-800 sm:text-base">
+                  <p className="mt-2 text-sm text-emerald-500 sm:text-base">
                     Thank you for your order. We will contact you soon.
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-xl bg-white px-4 py-3 text-sm text-slate-700 shadow-sm">
+              <div className="rounded-xl bg-zinc-800 px-4 py-3 text-sm text-zinc-300 shadow-sm border border-zinc-700">
                 <p>
-                  <span className="font-semibold text-slate-900">Order ID:</span> {order.orderId}
+                  <span className="font-semibold text-white">Order ID:</span> {order.orderId}
                 </p>
                 <p className="mt-1">
-                  <span className="font-semibold text-slate-900">Date:</span> {orderDate}
+                  <span className="font-semibold text-white">Date:</span> {orderDate}
                 </p>
               </div>
             </div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="premium-surface p-5 sm:p-6">
-              <h2 className="text-lg font-semibold text-slate-900">Customer Details</h2>
-              <div className="mt-4 space-y-2 text-sm text-slate-700 sm:text-base">
+            <div className="premium-surface border border-zinc-800 p-5 sm:p-6">
+              <h2 className="text-lg font-semibold text-white">Customer Details</h2>
+              <div className="mt-4 space-y-2 text-sm text-zinc-400 sm:text-base">
                 <p>
-                  <span className="font-semibold text-slate-900">Name:</span>{" "}
+                  <span className="font-semibold text-white">Name:</span>{" "}
                   {order.customer.fullName}
                 </p>
                 <p>
-                  <span className="font-semibold text-slate-900">Phone:</span>{" "}
+                  <span className="font-semibold text-white">Phone:</span>{" "}
                   {order.customer.phoneNumber}
                 </p>
                 <p>
-                  <span className="font-semibold text-slate-900">Address:</span>{" "}
+                  <span className="font-semibold text-white">Address:</span>{" "}
                   {order.customer.address}
                 </p>
                 {order.customer.note ? (
                   <p>
-                    <span className="font-semibold text-slate-900">Note:</span>{" "}
+                    <span className="font-semibold text-white">Note:</span>{" "}
                     {order.customer.note}
                   </p>
                 ) : null}
               </div>
             </div>
 
-            <div className="premium-surface p-5 sm:p-6">
-              <h2 className="text-lg font-semibold text-slate-900">Payment Method</h2>
-              <p className="mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-800 sm:text-base">
+            <div className="premium-surface border border-zinc-800 p-5 sm:p-6">
+              <h2 className="text-lg font-semibold text-white">Payment Method</h2>
+              <p className="mt-4 rounded-xl bg-emerald-900/30 px-4 py-3 text-sm leading-6 text-emerald-400 sm:text-base border border-emerald-900/50">
                 Cash on Delivery. Please keep the payable amount ready when the order arrives.
               </p>
-              <div className="mt-4 border-t border-slate-200 pt-4">
-                <p className="text-sm text-slate-600">Total Price</p>
-                <p className="mt-1 text-2xl font-bold text-slate-900">
+              <div className="mt-4 border-t border-zinc-800 pt-4">
+                <p className="text-sm text-zinc-400">Total Price</p>
+                <p className="mt-1 text-2xl font-bold text-white">
                   {new Intl.NumberFormat("en-US", {
                     style: "currency",
                     currency: "USD",

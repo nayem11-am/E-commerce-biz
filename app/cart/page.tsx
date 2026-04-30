@@ -15,8 +15,8 @@ export default function CartPage() {
       <Container>
         <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="text-4xl font-bold tracking-[-0.02em] text-slate-900 sm:text-5xl">Your Cart</h1>
-            <p className="mt-1 text-sm text-slate-600">
+            <h1 className="text-4xl font-bold tracking-[-0.02em] text-white sm:text-5xl">Your Cart</h1>
+            <p className="mt-1 text-sm text-zinc-400">
               Review selected products, adjust quantities, and continue to checkout.
             </p>
           </div>
@@ -25,7 +25,7 @@ export default function CartPage() {
             <button
               type="button"
               onClick={clearCart}
-              className="rounded-xl border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-100"
+              className="rounded-xl border border-zinc-700 px-3 py-2 text-sm font-medium text-zinc-300 transition duration-300 hover:-translate-y-0.5 hover:bg-zinc-800"
             >
               Clear Cart
             </button>
@@ -33,13 +33,13 @@ export default function CartPage() {
         </div>
 
         {!isHydrated ? (
-          <div className="premium-surface p-6 text-slate-600">
+          <div className="premium-surface p-6 text-zinc-400">
             Loading cart...
           </div>
         ) : items.length === 0 ? (
-          <div className="premium-surface border-dashed p-8 text-center sm:p-10">
-            <h2 className="text-xl font-semibold text-slate-900">Your cart is empty</h2>
-            <p className="mt-2 text-sm text-slate-600">
+          <div className="premium-surface border-dashed border-zinc-800 p-8 text-center sm:p-10">
+            <h2 className="text-xl font-semibold text-white">Your cart is empty</h2>
+            <p className="mt-2 text-sm text-zinc-400">
               Start exploring products and add items to your cart.
             </p>
             <Link
@@ -64,28 +64,28 @@ export default function CartPage() {
               ))}
             </div>
 
-            <aside className="premium-surface p-5 sm:p-6">
-              <h2 className="text-lg font-semibold text-slate-900">Order Summary</h2>
+            <aside className="premium-surface border border-zinc-800 p-5 sm:p-6">
+              <h2 className="text-lg font-semibold text-white">Order Summary</h2>
 
               <div className="mt-5 space-y-3 text-sm">
-                <div className="flex items-center justify-between text-slate-600">
+                <div className="flex items-center justify-between text-zinc-400">
                   <span>Items</span>
                   <span>{totalItems}</span>
                 </div>
-                <div className="flex items-center justify-between text-slate-600">
+                <div className="flex items-center justify-between text-zinc-400">
                   <span>Subtotal</span>
                   <span>{formatCurrency(totalPrice)}</span>
                 </div>
-                <div className="flex items-center justify-between text-slate-600">
+                <div className="flex items-center justify-between text-zinc-400">
                   <span>Delivery</span>
                   <span>Free</span>
                 </div>
               </div>
 
-              <div className="mt-5 border-t border-slate-200 pt-4">
+              <div className="mt-5 border-t border-zinc-800 pt-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-base font-semibold text-slate-900">Total</span>
-                  <span className="text-xl font-bold text-slate-900">
+                  <span className="text-base font-semibold text-white">Total</span>
+                  <span className="text-xl font-bold text-white">
                     {formatCurrency(totalPrice)}
                   </span>
                 </div>

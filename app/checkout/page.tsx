@@ -91,7 +91,7 @@ export default function CheckoutPage() {
     return (
       <section className="py-10 sm:py-12">
         <Container>
-          <div className="premium-surface p-6 text-slate-600">
+          <div className="premium-surface p-6 text-zinc-400">
             Loading checkout...
           </div>
         </Container>
@@ -103,19 +103,19 @@ export default function CheckoutPage() {
     <section className="py-10 sm:py-12">
       <Container>
         <div className="mb-7">
-          <h1 className="text-4xl font-bold tracking-[-0.02em] text-slate-900 sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-[-0.02em] text-white sm:text-5xl">
             Checkout (Cash on Delivery)
           </h1>
-          <p className="mt-2 text-sm text-slate-600 sm:text-base">
+          <p className="mt-2 text-sm text-zinc-400 sm:text-base">
             Enter your delivery details and place your order. Payment will be collected at
             delivery.
           </p>
         </div>
 
         {items.length === 0 ? (
-          <div className="premium-surface border-dashed p-8 text-center sm:p-10">
-            <h2 className="text-xl font-semibold text-slate-900">Your cart is empty</h2>
-            <p className="mt-2 text-sm text-slate-600">
+          <div className="premium-surface border-dashed border-zinc-800 p-8 text-center sm:p-10">
+            <h2 className="text-xl font-semibold text-white">Your cart is empty</h2>
+            <p className="mt-2 text-sm text-zinc-400">
               Add items to cart before placing a COD order.
             </p>
             <Link
@@ -133,7 +133,7 @@ export default function CheckoutPage() {
               noValidate
             >
               <div>
-                <label htmlFor="fullName" className="mb-1.5 block text-sm font-medium text-slate-700">
+                <label htmlFor="fullName" className="mb-1.5 block text-sm font-medium text-zinc-300">
                   Full Name
                 </label>
                 <input
@@ -142,7 +142,7 @@ export default function CheckoutPage() {
                   type="text"
                   value={values.fullName}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-200"
+                  className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-3.5 py-2.5 text-sm text-white outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-700"
                   placeholder="John Doe"
                   autoComplete="name"
                 />
@@ -154,9 +154,9 @@ export default function CheckoutPage() {
               <div>
                 <label
                   htmlFor="phoneNumber"
-                  className="mb-1.5 block text-sm font-medium text-slate-700"
+                  className="mb-1.5 block text-sm font-medium text-zinc-300"
                 >
-                  Phone Number <span className="text-rose-600">*</span>
+                  Phone Number <span className="text-rose-500">*</span>
                 </label>
                 <input
                   id="phoneNumber"
@@ -164,7 +164,7 @@ export default function CheckoutPage() {
                   type="tel"
                   value={values.phoneNumber}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-200"
+                  className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-3.5 py-2.5 text-sm text-white outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-700"
                   placeholder="+1 555 123 4567"
                   autoComplete="tel"
                   required
@@ -175,7 +175,7 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label htmlFor="address" className="mb-1.5 block text-sm font-medium text-slate-700">
+                <label htmlFor="address" className="mb-1.5 block text-sm font-medium text-zinc-300">
                   Address
                 </label>
                 <textarea
@@ -184,7 +184,7 @@ export default function CheckoutPage() {
                   value={values.address}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-200"
+                  className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-3.5 py-2.5 text-sm text-white outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-700"
                   placeholder="Street, city, postal code"
                 />
                 {errors.address && (
@@ -193,7 +193,7 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label htmlFor="note" className="mb-1.5 block text-sm font-medium text-slate-700">
+                <label htmlFor="note" className="mb-1.5 block text-sm font-medium text-zinc-300">
                   Optional Note
                 </label>
                 <textarea
@@ -202,7 +202,7 @@ export default function CheckoutPage() {
                   value={values.note}
                   onChange={handleChange}
                   rows={3}
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-200"
+                  className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-3.5 py-2.5 text-sm text-white outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-700"
                   placeholder="Landmark or delivery instructions"
                 />
               </div>
@@ -215,17 +215,17 @@ export default function CheckoutPage() {
               </button>
             </form>
 
-            <aside className="premium-surface p-5 sm:p-6">
-              <h2 className="text-lg font-semibold text-slate-900">Cart Summary</h2>
+            <aside className="premium-surface border border-zinc-800 p-5 sm:p-6">
+              <h2 className="text-lg font-semibold text-white">Cart Summary</h2>
 
-              <ul className="mt-4 space-y-3 border-b border-slate-200 pb-4">
+              <ul className="mt-4 space-y-3 border-b border-zinc-800 pb-4">
                 {items.map((item) => (
                   <li key={item.id} className="flex items-start justify-between gap-3 text-sm">
                     <div>
-                      <p className="font-medium text-slate-900">{item.name}</p>
-                      <p className="text-slate-500">Qty: {item.quantity}</p>
+                      <p className="font-medium text-white">{item.name}</p>
+                      <p className="text-zinc-500">Qty: {item.quantity}</p>
                     </div>
-                    <p className="font-semibold text-slate-900">
+                    <p className="font-semibold text-white">
                       {formatCurrency(item.price * item.quantity)}
                     </p>
                   </li>
@@ -233,20 +233,20 @@ export default function CheckoutPage() {
               </ul>
 
               <div className="mt-4 space-y-2 text-sm">
-                <div className="flex items-center justify-between text-slate-600">
+                <div className="flex items-center justify-between text-zinc-400">
                   <span>Items</span>
                   <span>{totalItems}</span>
                 </div>
-                <div className="flex items-center justify-between text-slate-600">
+                <div className="flex items-center justify-between text-zinc-400">
                   <span>Delivery</span>
                   <span>Free</span>
                 </div>
               </div>
 
-              <div className="mt-4 border-t border-slate-200 pt-4">
+              <div className="mt-4 border-t border-zinc-800 pt-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-base font-semibold text-slate-900">Total</span>
-                  <span className="text-xl font-bold text-slate-900">
+                  <span className="text-base font-semibold text-white">Total</span>
+                  <span className="text-xl font-bold text-white">
                     {formatCurrency(totalPrice)}
                   </span>
                 </div>

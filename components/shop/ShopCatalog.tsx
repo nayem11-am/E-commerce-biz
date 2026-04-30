@@ -46,8 +46,8 @@ export function ShopCatalog({
               onClick={() => setActiveCategory(option.slug)}
               className={`rounded-full border px-4 py-2 text-sm font-medium transition duration-300 ${
                 isActive
-                  ? "border-slate-900 bg-slate-900 text-white"
-                  : "border-slate-300 bg-white text-slate-700 hover:-translate-y-0.5 hover:border-slate-400 hover:text-slate-900"
+                  ? "border-red-600 bg-red-600 text-white"
+                  : "border-zinc-800 bg-zinc-900 text-zinc-300 hover:-translate-y-0.5 hover:border-zinc-700 hover:text-white"
               }`}
             >
               {option.name}
@@ -57,8 +57,8 @@ export function ShopCatalog({
       </div>
 
       {filteredProducts.length === 0 ? (
-        <div className="premium-surface border-dashed p-10 text-center">
-          <p className="text-slate-600">No products found for this category.</p>
+        <div className="premium-surface border-dashed border-zinc-800 p-10 text-center">
+          <p className="text-zinc-400">No products found for this category.</p>
         </div>
       ) : (
         <AnimatedProductGrid
