@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Menu, ShoppingBag, X, Home, Store, CreditCard } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useCart } from "@/hooks/useCart";
@@ -15,9 +15,9 @@ export function Navbar() {
     "Premium picks, better prices, smooth checkout. New arrivals updated daily.";
   const cartCount = isHydrated ? items.length : null;
   const mobileLinks = [
-    { label: "Home", href: "/" },
-    { label: "Shop", href: "/shop" },
-    { label: "Checkout", href: "/checkout" },
+    { label: "Home", href: "/", icon: <Home className="h-4 w-4" /> },
+    { label: "Shop", href: "/shop", icon: <Store className="h-4 w-4" /> },
+    { label: "Checkout", href: "/checkout", icon: <CreditCard className="h-4 w-4" /> },
   ];
 
   useEffect(() => {
@@ -38,14 +38,13 @@ export function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-zinc-800 bg-black/90 shadow-sm backdrop-blur-xl md:bg-black/95">
-      <div className="hidden h-7 overflow-hidden bg-zinc-900 text-zinc-300 md:block">
-        <Container>
-          <div className="marquee-wrap whitespace-nowrap text-xs font-medium leading-7 tracking-[0.02em]">
-            <div className="marquee-track">
-              <span className="marquee-item">{inlineMarqueeText}</span>
-            </div>
+      <div className="h-7 overflow-hidden bg-zinc-900 text-zinc-300">
+        <div className="marquee-wrap whitespace-nowrap text-xs font-medium leading-7 tracking-[0.02em]">
+          <div className="marquee-track">
+            <span className="marquee-item">{inlineMarqueeText}</span>
+            <span className="marquee-item ml-20">{inlineMarqueeText}</span>
           </div>
-        </Container>
+        </div>
       </div>
 
       <Container>
@@ -117,13 +116,13 @@ export function Navbar() {
       />
 
       <aside
-        className={`fixed right-4 top-20 z-50 w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_10px_40px_rgba(0,0,0,0.2)] transition-all duration-300 md:hidden ${
+        className={`fixed right-4 top-20 z-50 w-72 rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_10px_40px_rgba(0,0,0,0.2)] transition-all duration-300 md:hidden ${
           isMenuOpen ? "translate-y-0 opacity-100 pointer-events-auto" : "-translate-y-4 opacity-0 pointer-events-none"
         }`}
         aria-label="Mobile navigation menu"
       >
-        <div className="mb-2 flex items-center justify-between border-b border-slate-100 px-3 pb-2 pt-1">
-          <p className="text-sm font-bold text-slate-900">Menu</p>
+        <div className="mb-2 flex items-center justify-between border-b border-slate-100 px-3 pb-3 pt-1">
+          <p className="text-sm font-bold uppercase tracking-wider text-slate-500">Navigation</p>
           <button
             type="button"
             aria-label="Close navigation menu"
@@ -133,14 +132,15 @@ export function Navbar() {
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
-        <ul className="flex flex-col gap-1">
+        <ul className="flex flex-col">
           {mobileLinks.map((item) => (
-            <li key={item.href}>
+            <li key={item.href} className="border-b border-slate-50 last:border-0">
               <Link
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="block rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-red-600"
+                className="flex items-center gap-3 px-4 py-4 text-base font-bold text-black transition hover:bg-slate-50 hover:text-red-600"
               >
+                <span className="text-slate-400">{item.icon}</span>
                 {item.label}
               </Link>
             </li>
@@ -156,32 +156,17 @@ export function Navbar() {
         .marquee-track {
           display: inline-block;
           white-space: nowrap;
-          animation: top-navbar-marquee 18s linear infinite;
+          animation: top-navbar-marquee 30s linear infinite;
         }
         .marquee-item {
           display: inline-block;
-          padding-right: 0;
         }
         @keyframes top-navbar-marquee {
           from {
-            transform: translateX(100%);
+            transform: translateX(0);
           }
           to {
-            transform: translateX(-100%);
-          }
-        }
-        @media (max-width: 767px) {
-          .marquee-track {
-            animation: none;
-            transform: translateX(0);
-            display: block;
-            max-width: 100%;
-          }
-          .marquee-item {
-            display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            transform: translateX(-50%);
           }
         }
       `}</style>
