@@ -117,30 +117,29 @@ export function Navbar() {
       />
 
       <aside
-        className={`fixed right-0 top-0 z-50 h-screen w-[82%] max-w-xs border-l border-zinc-800 bg-zinc-950 shadow-2xl transition-transform duration-300 md:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed right-4 top-20 z-50 w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_10px_40px_rgba(0,0,0,0.2)] transition-all duration-300 md:hidden ${
+          isMenuOpen ? "translate-y-0 opacity-100 pointer-events-auto" : "-translate-y-4 opacity-0 pointer-events-none"
         }`}
-        aria-label="Mobile navigation drawer"
+        aria-label="Mobile navigation menu"
       >
-        <div className="flex h-16 items-center justify-between border-b border-zinc-800 px-5">
-          <p className="text-base font-semibold text-white">Menu</p>
+        <div className="mb-2 flex items-center justify-between border-b border-slate-100 px-3 pb-2 pt-1">
+          <p className="text-sm font-bold text-slate-900">Menu</p>
           <button
             type="button"
             aria-label="Close navigation menu"
             onClick={() => setIsMenuOpen(false)}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
           >
-            <X className="h-6 w-6" aria-hidden="true" />
+            <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
-
-        <ul className="space-y-2 px-4 py-5">
+        <ul className="flex flex-col gap-1">
           {mobileLinks.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="relative block px-4 py-3 text-sm font-semibold text-zinc-300 transition-colors duration-300 hover:text-white after:absolute after:bottom-2 after:left-4 after:h-[2px] after:w-0 after:rounded-full after:bg-red-600 after:transition-all after:duration-300 hover:after:w-10"
+                className="block rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-red-600"
               >
                 {item.label}
               </Link>
