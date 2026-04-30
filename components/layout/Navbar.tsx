@@ -138,9 +138,9 @@ export function Navbar() {
               <Link
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="flex items-center gap-3 px-4 py-4 text-base font-bold text-black transition hover:bg-slate-50 hover:text-red-600"
+                className="flex items-center gap-3 px-4 py-4 text-base font-bold !text-black transition hover:bg-slate-50 hover:text-red-600"
               >
-                <span className="text-slate-400">{item.icon}</span>
+                <span className="text-slate-500">{item.icon}</span>
                 {item.label}
               </Link>
             </li>
